@@ -1,0 +1,194 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silly Story Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: linear-gradient(to bottom right, #fceabb, #f8b500);
+      --container-bg-light: #fff7e6;
+      --heading-light: #d97706;
+      --input-border-light: #ffd6a5;
+      --button-bg-light: #fca311;
+      --button-hover-light: #ff9800;
+      --story-bg-light: #fff3cd;
+      --story-text-light: #5c4033;
+
+      --bg-dark: linear-gradient(to bottom right, #1e3a8a, #0f172a);
+      --container-bg-dark: #1e293b;
+      --heading-dark: #60a5fa;
+      --input-border-dark: #334155;
+      --button-bg-dark: #3b82f6;
+      --button-hover-dark: #2563eb;
+      --story-bg-dark: #334155;
+      --story-text-dark: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background 0.5s ease;
+    }
+
+    .container {
+      background: var(--container-bg-light);
+      padding: 2em 3em;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      transition: background 0.5s ease;
+    }
+
+    h1 {
+      color: var(--heading-light);
+      margin-bottom: 1em;
+      transition: color 0.5s ease;
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      justify-content: center;
+      margin-bottom: 1em;
+    }
+
+    .input-wrapper img {
+      width: 28px;
+      height: 28px;
+    }
+
+    input {
+      padding: 0.6em;
+      border-radius: 10px;
+      border: 1px solid var(--input-border-light);
+      font-size: 1em;
+      width: 60%;
+      transition: border 0.5s ease, background 0.5s ease;
+    }
+
+    button {
+      background-color: var(--button-bg-light);
+      color: white;
+      padding: 0.6em 1.2em;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover-light);
+    }
+
+    #story {
+      margin-top: 1.5em;
+      background: var(--story-bg-light);
+      padding: 1.2em;
+      border-radius: 12px;
+      color: var(--story-text-light);
+      font-size: 1.1em;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, background 0.5s ease, color 0.5s ease;
+    }
+
+    #story.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toggle-btn {
+      margin-bottom: 1em;
+      font-size: 0.9em;
+      background: none;
+      border: 2px dashed var(--input-border-light);
+      padding: 0.4em 0.8em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+    }
+
+    body.dark .container {
+      background: var(--container-bg-dark);
+    }
+
+    body.dark h1 {
+      color: var(--heading-dark);
+    }
+
+    body.dark input {
+      border-color: var(--input-border-dark);
+      background: #1e293b;
+      color: #f1f5f9;
+    }
+
+    body.dark button {
+      background-color: var(--button-bg-dark);
+    }
+
+    body.dark button:hover {
+      background-color: var(--button-hover-dark);
+    }
+
+    body.dark #story {
+      background: var(--story-bg-dark);
+      color: var(--story-text-dark);
+    }
+
+    body.dark .toggle-btn {
+      border-color: var(--input-border-dark);
+      color: #f1f5f9;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5em 1.2em;
+      }
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="toggle-btn" onclick="toggleMode()">Switch to Dark Mode 🌙</button>
+    <h1>🌟 Silly Story Generator 🌈</h1>
+    <div class="input-wrapper">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="character icon">
+      <input id="nameInput" type="text" placeholder="Enter a character's name..." />
+    </div>
+    <button id="generate">Make Me Laugh</button>
+    <div id="story"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
